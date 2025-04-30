@@ -24,7 +24,7 @@ app.set("views","src/views");
 app.set("view engine", "handlebars");
 
 const sessionConfig = {
-  secret: "sessionKey",
+  secret: process.env.SECRET_KEY,
   resave: false,
   saveUninitialized: false,
   cookie: {

@@ -8,7 +8,7 @@ class UserDaoMongo extends MongoDao {
     }
     getByEmail = async (email) => {
         try {
-          return await UserModel.findOne({ email });
+          return await this.model.findOne({ email }).populate("cart").lean();
         } catch (error) {
           throw new Error(error);
         }

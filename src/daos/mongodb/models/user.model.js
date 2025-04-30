@@ -1,5 +1,5 @@
 // user.model.js
-import { Schema, model } from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
 // import { userController } from "../../..userController.js";
 
 const UserSchema = new Schema({
@@ -8,7 +8,7 @@ const UserSchema = new Schema({
   email: {type: String, unique: true},
   age: { type: Number, required: true },
   password: {type: String, required: true},
-  cart: {},                                 //id con referencia a Carts
+  cart: {type: Schema.Types.ObjectId, ref: "Cart"},
   role: { type: String, required: true, default: 'user' },
 });
 

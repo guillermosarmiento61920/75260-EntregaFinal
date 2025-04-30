@@ -1,5 +1,7 @@
 // errorHandler.js
-export const errorHandler = (error, req, res, next) => {
+export const errorHandler = (error, req, res) => {
     const status = error.status || 500;
-  res.render("error", { error });
+    const message = error.message || "Unexpected error";
+
+  res.status(status).render("error", { status, message });
 };

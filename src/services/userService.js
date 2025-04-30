@@ -16,8 +16,6 @@ register = async (body) => {
       const existUser = await this.dao.getByEmail(email);
       if (existUser) throw new CustomError("El usuario ya existe", 400);
 
-      console.log("[DEBUG] Contraseña recibida:", password);
-
       const hashedPassword = createHash(password)
       console.log("contra hasheada", hashedPassword);
 
@@ -26,12 +24,8 @@ const userData = {
   email,
   password: hashedPassword
 };
-console.log("[DEBUG FIX] Datos a guardar:", userData);
-
       const response = await this.dao.create(userData);
       if (!response) throw new CustomError("Error al registrar usuario", 400);
-
-      console.log("[DEBUG] Usuario guardado en DB:", response);
 
       return response;
     } catch (error) {
@@ -75,7 +69,7 @@ generateToken = (user) => {
   getById = async (id) => {
     try {
       const response = await this.dao.getById(id);
-      if (!response) throw new CustomError("Product not found", 404);
+      if (!response) throw new CustomError("Not found", 404);
       return response;
     } catch (error) {
       throw error;
@@ -95,7 +89,7 @@ generateToken = (user) => {
   update = async (id, body) => {
     try {
       const response = await this.dao.update(id, body);
-      if (!response) throw new CustomError("Product not found", 404);
+      if (!response) throw new CustomError("Not found", 404);
       return response;
     } catch (error) {
       throw(error);
@@ -105,7 +99,7 @@ generateToken = (user) => {
   delete = async (id) => {
     try {
       const response = await this.dao.delete(id);
-      if (!response) throw new CustomError("Product not found", 404);
+      if (!response) throw new CustomError("Not found", 404);
       return response;
     } catch (error) {
       throw(error);

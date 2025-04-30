@@ -10,7 +10,8 @@ class UserController {
     try {
       console.log("[CONTROLLER DEBUG] Body recibido:", req.body);
       await this.service.register(req.body);
-      return res.redirect("/");
+      if (req.accepts("html")) return res.redirect("/");
+      res.status(201).json({ message: "Usuario registrado correctamente" });
     } catch (error) {
       next(error);
     }
@@ -60,7 +61,9 @@ class UserController {
     try {
       const { id } = req.params;
       const response = await this.service.update(id, req.body);
+      if (!response) return res.status(404).json({ message: "Usuario no encontrado" });
       res.status(200).json(response);
+
     } catch (error) {
       next(error);
     }
@@ -70,7 +73,9 @@ class UserController {
     try {
       const { id } = req.params;
       const response = await this.service.delete(id);
+      if (!response) return res.status(404).json({ message: "Usuario no encontrado" });
       res.status(200).json(response);
+
     } catch (error) {
       next(error);
     }
