@@ -11,6 +11,10 @@ import mongoStore from "connect-mongo";
 import passport from "passport";
 import './config/jwtStrategy.js'
 import sessionRouter from "./routes/sessionRouter.js"
+import dotenv from "dotenv";
+
+//para actualizar variables de entorno
+dotenv.config();
 
 const app = express();
 const PORT = 8080;
