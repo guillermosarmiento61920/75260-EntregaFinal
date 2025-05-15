@@ -26,20 +26,3 @@ const strategyConfigCookies = {
 };
 
 passport.use('jwt-cookies', new Strategy(strategyConfigCookies, verifyToken));
-
-// passport.serializeUser((user, done) => {
-//   try {
-//     done(null, user._id);
-//   } catch (error) {
-//     done(error);
-//   }
-// });
-
-// passport.deserializeUser(async (id, done) => {
-//   try {
-//     const user = await userService.getById(id);
-//     return done(null, user);
-//   } catch (error) {
-//     done(error);
-//   }
-// });

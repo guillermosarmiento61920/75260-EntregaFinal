@@ -12,12 +12,15 @@ import passport from "passport";
 import './config/jwtStrategy.js'
 import sessionRouter from "./routes/sessionRouter.js"
 import dotenv from "dotenv";
+import morgan from "morgan";
+// import { apiRouter } from "./routes/index.js";
+import emailRouter from "./routes/emailRouter.js";
 
 //para actualizar variables de entorno
 dotenv.config();
 
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080; 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -44,10 +47,13 @@ app.use(session(sessionConfig));
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(morgan("dev"))
+// app.use("/api", apiRouter.getRouter())  
 
 app.use("/users", userRouter);
 app.use("/", viewsRouter);
 app.use("/api/sessions", sessionRouter);
+app.use("/api/email", emailRouter);
 
 app.use(errorHandler);
 
@@ -56,3 +62,7 @@ connectMongoDB()
   .catch((error) => console.log(error));
 
 app.listen(PORT, () => console.log(`Server listening on http://localhost:${PORT}`));
+
+
+
+

@@ -8,8 +8,17 @@ const UserSchema = new Schema({
   email: {type: String, unique: true},
   age: { type: Number, required: true },
   password: {type: String, required: true},
-  cart: {type: Schema.Types.ObjectId, ref: "Cart"},
+  cart: {type: Schema.Types.ObjectId, ref: "Cart", default: null},
   role: { type: String, required: true, default: 'user' },
+  // isGithub: {
+  //   type: Boolean,
+  //   required: true,
+  //   default: false,
+  // },
+  // isGoogle: {
+  //   type: Boolean,
+  //   required: true,
+  //   default: false,
 });
 
 export const UserModel = model("user", UserSchema);

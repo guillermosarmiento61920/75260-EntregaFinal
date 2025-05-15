@@ -13,6 +13,15 @@ class UserDaoMongo extends MongoDao {
           throw new Error(error);
         }
       };
+
+      
+  getUserById = async (id) => {
+    try {
+      return await this.model.findById(id).populate("cart");
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
 }
 
 export const userDao = new UserDaoMongo(UserModel);

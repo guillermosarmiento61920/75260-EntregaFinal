@@ -1,5 +1,7 @@
 // userController.js
 import { userService } from "../services/userService.js";
+// import { createResponse } from "../utils.js";
+
 
 class UserController {
   constructor(service) {
@@ -8,8 +10,9 @@ class UserController {
 
   register = async (req, res, next) => {
     try {
-      console.log("[CONTROLLER DEBUG] Body recibido:", req.body);
-      await this.service.register(req.body);
+      const data = await this.service.register(req.body);
+            // createResponse(res, 201, data);
+      
       if (req.accepts("html")) return res.redirect("/");
       res.status(201).json({ message: "Usuario registrado correctamente" });
     } catch (error) {
@@ -27,6 +30,18 @@ class UserController {
       next(error);
     }
   };
+
+  profile = async (req, res, next) => {
+      try {
+        const { id } = req.user;
+        const user = await this.repository.getUserById(id);
+        createResponse(res, 200, user);
+      } catch (error) {
+        next(error);
+      }
+    };
+
+// deberia borrar todo desde aqui
 
   getAll = async (req, res, next) => {
     try {
