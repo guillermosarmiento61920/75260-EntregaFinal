@@ -1,3 +1,4 @@
+// cartRouter.js
 import { Router } from "express";
 import { passportCall } from "../middlewares/passport-call.js";
 import { checkRole } from "../middlewares/check-role.js";
@@ -37,7 +38,7 @@ router.delete(
 
 router.post(
   "/products/:idProd",
-  [passportCall("jwt", { session: false })],
+  [passportCall("jwt", { session: false }), checkRole(["user"])],
   cartController.addProdToCart
 );
 
@@ -60,3 +61,4 @@ router.delete(
 );
 
 export default router;
+

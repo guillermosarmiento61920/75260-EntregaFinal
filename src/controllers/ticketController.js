@@ -1,5 +1,6 @@
+// ticketController.js
 import { ticketRepository } from "../repositories/ticket-repository.js";
-import { createResponse } from '../utils.js'
+import { createResponse } from '../userUtils.js'
 
 export default class TicketController {
   constructor(repository) {
@@ -18,3 +19,4 @@ export default class TicketController {
 }
 
 export const ticketController = new TicketController(ticketRepository);
+

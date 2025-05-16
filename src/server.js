@@ -15,6 +15,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 // import { apiRouter } from "./routes/index.js";
 import emailRouter from "./routes/emailRouter.js";
+import passwordRouter from "./routes/passwordRouter.js";
 
 //para actualizar variables de entorno
 dotenv.config();
@@ -54,6 +55,7 @@ app.use("/users", userRouter);
 app.use("/", viewsRouter);
 app.use("/api/sessions", sessionRouter);
 app.use("/api/email", emailRouter);
+app.use("/users", passwordRouter);
 
 app.use(errorHandler);
 

@@ -1,3 +1,4 @@
+// ticket.model.js
 import { Schema, model } from 'mongoose';
 
 const ticketSchema = new Schema({
@@ -8,3 +9,4 @@ const ticketSchema = new Schema({
 });
 
 export const TicketModel = model('ticket', ticketSchema);
+

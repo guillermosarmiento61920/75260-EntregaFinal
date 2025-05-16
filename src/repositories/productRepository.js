@@ -1,3 +1,4 @@
+// productRouter.js
 import { productDaoMongo } from "../daos/mongodb/product-dao.js";
 import CustomError from "../utils/custom-error.js";
 
@@ -58,3 +59,4 @@ class ProductRepository {
 }
 
 export const productRepository = new ProductRepository(productDaoMongo);
+

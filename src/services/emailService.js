@@ -1,3 +1,4 @@
+// emailService.js
 import path from "path";
 import { createTransport } from "nodemailer";
 import hbs from "nodemailer-express-handlebars";
@@ -49,3 +50,5 @@ export const configMailHbs = {
         text: 'Te estabamos esperando'
     }
   };
+
+  

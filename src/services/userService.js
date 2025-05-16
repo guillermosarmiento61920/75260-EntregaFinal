@@ -11,6 +11,9 @@ class UserService {
   }
 
 register = async (body) => {
+
+  if (!email || !password) throw new CustomError("Faltan campos obligatorios", 400);
+
     try {
       const { email, password, ...rest } = body;
       const existUser = await this.dao.getByEmail(email);
@@ -34,6 +37,9 @@ const userData = {
   };
 
   login = async (email, password) => {
+
+if (!email || !password) throw new CustomError("Faltan credenciales", 400);
+
      try {
        const userExist = await this.dao.getByEmail(email);
        if (!userExist) throw new CustomError("Credenciales incorrectas", 400);
@@ -69,7 +75,7 @@ generateToken = (user) => {
   getById = async (id) => {
     try {
       const response = await this.dao.getById(id);
-      if (!response) throw new CustomError("Not found", 404);
+      if (!response) throw new CustomError("No encontrado", 404);
       return response;
     } catch (error) {
       throw error;
@@ -79,7 +85,7 @@ generateToken = (user) => {
   create = async (body) => {
     try {
       const response = await this.dao.create(body);
-      if (!response) throw new CustomError("Error creating product", 404);
+      if (!response) throw new CustomError("Error creando producto", 404);
       return response;
     } catch (error) {
       throw(error);
@@ -89,7 +95,7 @@ generateToken = (user) => {
   update = async (id, body) => {
     try {
       const response = await this.dao.update(id, body);
-      if (!response) throw new CustomError("Not found", 404);
+      if (!response) throw new CustomError("No encontrado", 404);
       return response;
     } catch (error) {
       throw(error);
@@ -99,12 +105,21 @@ generateToken = (user) => {
   delete = async (id) => {
     try {
       const response = await this.dao.delete(id);
-      if (!response) throw new CustomError("Not found", 404);
+      if (!response) throw new CustomError("No encontrado", 404);
       return response;
     } catch (error) {
       throw(error);
     }
   };
+
+  getUserById = async (id) => {
+  try {
+    return await this.dao.getUserById(id);
+  } catch (error) {
+    throw new CustomError("Usuario no encontrado", 404);
+  }
+};
 }
 
 export const userService = new UserService(userDao);
+

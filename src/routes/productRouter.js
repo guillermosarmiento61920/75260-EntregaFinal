@@ -1,3 +1,4 @@
+// productRouter.js
 import { Router } from "express";
 import { passportCall } from "../middlewares/passport-call.js";
 import { checkRole } from "../middlewares/check-role.js";
@@ -32,3 +33,4 @@ router.delete(
 );
 
 export default router;
+

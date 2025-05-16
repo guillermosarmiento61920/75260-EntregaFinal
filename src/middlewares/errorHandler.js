@@ -5,3 +5,4 @@ export const errorHandler = (error, req, res) => {
 
   res.status(status).render("error", { status, message });
 };
+

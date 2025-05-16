@@ -29,6 +29,11 @@ router.get("/perfil", (req, res) => {
     res.render("perfil", { user: req.user });
 });
 
+router.get("/forgot-password", (req, res) => {
+  res.render("forgotPassword");
+});
+
+
 // export default class MainRouter {
 //   constructor() {
 //     this.router = Router();
@@ -52,3 +57,4 @@ router.get("/perfil", (req, res) => {
 
 
 export default router
+

@@ -1,3 +1,4 @@
+// emailController.js
 import { configMail, configMailHbs, transporter } from "../services/emailService.js";
 
 export const sendMailEth = async (req, res, next) => {
@@ -8,3 +9,4 @@ export const sendMailEth = async (req, res, next) => {
     next(error);
   }
 };
+

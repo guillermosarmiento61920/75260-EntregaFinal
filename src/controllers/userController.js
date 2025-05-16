@@ -34,7 +34,7 @@ class UserController {
   profile = async (req, res, next) => {
       try {
         const { id } = req.user;
-        const user = await this.repository.getUserById(id);
+        const user = await this.service.getUserById(id);
         createResponse(res, 200, user);
       } catch (error) {
         next(error);
@@ -98,3 +98,4 @@ class UserController {
 }
 
 export const userController = new UserController(userService)
+

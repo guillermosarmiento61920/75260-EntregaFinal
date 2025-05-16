@@ -1,3 +1,4 @@
+// userDto.js
 export default class UserDTO {
     constructor(user){
         this.first_name = user.first_name;

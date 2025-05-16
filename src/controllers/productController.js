@@ -1,5 +1,6 @@
+// productController.js
 import { productRepository } from "../repositories/product-repository.js";
-import { createResponse } from "../utils.js";
+import { createResponse } from "../userUtils.js";
 
 class ProductController {
   constructor(repository) {
@@ -55,3 +56,4 @@ class ProductController {
 }
 
 export const productController = new ProductController(productRepository);
+

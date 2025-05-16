@@ -1,3 +1,4 @@
+// userRepository.js
 import jwt from "jsonwebtoken";
 import "dotenv/config";
 import CustomError from "../utils/custom-error.js";
@@ -80,3 +81,4 @@ class UserRepository {
 }
 
 export const userRepository = new UserRepository(userDaoMongo);
+

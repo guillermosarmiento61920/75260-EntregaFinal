@@ -26,3 +26,4 @@ const strategyConfigCookies = {
 };
 
 passport.use('jwt-cookies', new Strategy(strategyConfigCookies, verifyToken));
+

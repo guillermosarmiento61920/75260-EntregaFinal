@@ -1,3 +1,4 @@
+// passportCall.js
 import passport from "passport";
 
 export const passportCall = (strategy, options = {}) => {
@@ -16,3 +17,4 @@ export const passportCall = (strategy, options = {}) => {
     })(req, res, next);
   };
 };
+

@@ -25,3 +25,4 @@ class UserDaoMongo extends MongoDao {
 }
 
 export const userDao = new UserDaoMongo(UserModel);
+

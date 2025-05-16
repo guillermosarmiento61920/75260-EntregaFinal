@@ -1,3 +1,4 @@
+// cart.model.js
 import { Schema, model } from "mongoose";
 
 const cartSchema = new Schema({
@@ -17,3 +18,4 @@ const cartSchema = new Schema({
   });
 
 export const CartModel = model("carts", cartSchema);
+

@@ -16,10 +16,11 @@ router.get("/private-cookies-admin",passport.authenticate("jwt-cookies"),checkRo
 router.get('/profile', passportCall('jwt', { session: false }), userController.profile);
 
 
-router.get("/", userController.getAll);
-router.get("/:id", userController.getById);
-router.post("/", userController.create);
-router.put("/:id", userController.update);
-router.delete("/:id", userController.delete);
+router.get("/", passportCall("jwt", { session: false }), checkRole(["admin"]), userController.getAll);
+router.get("/:id", passportCall("jwt", { session: false }), checkRole(["admin"]), userController.getById);
+router.post("/", passportCall("jwt", { session: false }), checkRole(["admin"]), userController.create);
+router.put("/:id", passportCall("jwt", { session: false }), checkRole(["admin"]), userController.update);
+router.delete("/:id", passportCall("jwt", { session: false }), checkRole(["admin"]), userController.delete);
 
 export default router;
+

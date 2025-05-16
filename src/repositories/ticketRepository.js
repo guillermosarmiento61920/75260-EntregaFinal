@@ -1,3 +1,4 @@
+// ticketRepository.js
 import { ticketDaoMongo } from "../daos/mongodb/ticket-dao.js";
 import CustomError from "../utils/custom-error.js";
 import { cartRepository } from "./cart-repository.js";
@@ -42,3 +43,4 @@ export default class TicketRepository {
 }
 
 export const ticketRepository = new TicketRepository(ticketDaoMongo);
+
