@@ -4,7 +4,7 @@ import CustomError from "../utils/custom-error.js";
 
 export const checkRole = (role) => {
     return async (req, res, next) => {
-      if (!req.user) {
+      if (!req.user || !roles.includes(req.user.role)) {
         return res.status(401).send({ status: "error", error: "No autorizado" });
       }
 
